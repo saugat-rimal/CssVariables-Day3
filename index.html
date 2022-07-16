@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoped CSS Variables with JS</title>
+    <style>
+        :root {
+            --base: #f8f8ff;
+            --spacing: 10px;
+            --blur: 10px;
+        }
+
+        img {
+            padding: var(--spacing);
+            background-color: var(--base);
+            filter: blur(var(--blur));
+        }
+
+        .hl {
+            color: var(--base);
+        }
+
+        /* Basic Styles Except Css Variables */
+        body {
+            font-family: "Helvetica";
+            background-color: #dde1e7;
+            color: #303030;
+            font-size: calc(1.5rem + 1vw);
+            text-align: center;
+
+
+        }
+
+        .controls {
+            font-size: calc(1rem+ 1vw);
+            padding: 40px 10px;
+
+        }
+
+        .contentimage {
+            margin: 0 10px;
+
+
+        }
+
+        #img {
+            width: 80vw;
+            height: auto;
+            object-fit: cover;
+            max-width: 800px;
+            box-shadow: inset 2px 2px 5px #babecc,
+                inset -5px -5px 10px #ffffff73;
+        }
+
+        h1 {
+            text-shadow: 1px 1px 2px black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Update CSS Variables with
+        <span class="hl">JS</span>
+    </h1>
+    <div class="controls">
+        <label for="spacing">Spacing:</label>
+        <input type="range" name="spacing" id="spacing" min="15" max="150" value="10" data-sizing="px">
+
+        <label for="spacing">Blur:</label>
+        <input type="range" name="blur" id="blur" min="0" max="25" value="10" data-sizing="px">
+
+        <label for="spacing">Base Color:</label>
+        <input type="color" name="base" id="base" value="#f8f8ff">
+    </div>
+
+    <div class="contentimage">
+        <img id="img"
+            src="https://images.unsplash.com/photo-1465188162913-8fb5709d6d57?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&ixid=MXwxfDB8MXxhbGx8fHx8fHx8fA&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=800"
+            alt="girl on hill" title="girl on hill" draggable="true">
+    </div>
+
+
+    <script>
+        const inputs = document.querySelectorAll('.controls input');
+
+        function handleUpdate() {
+            const suffix = this.dataset.sizing || "";
+            document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+        }
+
+        inputs.forEach(input => input.addEventListener('change', handleUpdate));
+        inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+    </script>
+
+</body>
+
+</html>
