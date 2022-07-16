@@ -1,3 +1,3 @@
 # CssVariables-Day3
 
-![image](https://user-images.githubusercontent.com/86593756/179362715-c8dc2611-a37c-4f5c-96b2-7705726aa6c3.png)
+![image](https://user-images.githubusercontent.com/86593756/179363159-ae4a99a9-361f-4ade-a54a-5b31af0ef566.png)
